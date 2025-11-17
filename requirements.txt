@@ -1,0 +1,4 @@
+hoyolabrssfeeds
+requests
+python-dotenv
+pydantic

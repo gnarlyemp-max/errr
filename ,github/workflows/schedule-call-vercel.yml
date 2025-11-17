@@ -1,0 +1,23 @@
+name: scheduled-generate-feeds-vercel
+on:
+  schedule:
+    # every 15 minutes (change as needed)
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  call-generator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Vercel generate_feeds endpoint
+        env:
+          VERCEL_ENDPOINT: https://<your-vercel-project>.vercel.app/api/generate_feeds
+        run: |
+          echo "Calling $VERCEL_ENDPOINT"
+          status=$(curl -s -o /dev/null -w "%{http_code}" "$VERCEL_ENDPOINT")
+          echo "HTTP status: $status"
+          if [ "$status" != "200" ]; then
+            echo "Non-200 from endpoint; printing response for debug..."
+            curl -s "$VERCEL_ENDPOINT" || true
+            exit 1
+          fi
