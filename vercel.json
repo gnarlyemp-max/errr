@@ -2,6 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/**/*.py": {
+      "runtime": "python3.11",
+      "memory": 1024,
+      "maxDuration": 10,
       "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,static/**}"
     }
   },

@@ -1,19 +1,3 @@
-# api/generate_feeds.py
-"""
-Generates Hoyolab JSON feeds, uploads JSON to Supabase, converts each JSON to RSS (id-id),
-and uploads the RSS back to Supabase under rss/<feed>-id.xml.
-
-Channel metadata mapping:
- - genshin.json -> title "Genshin Impact ID - latest", link "https://genshin.hoyoverse.com/id/news", description "latest feed of Genshin Impact in id"
- - starrail.json -> title "Honkai Star Rail - Berita Hoyolab", link "https://hsr.hoyoverse.com/id-id/news", description "Berita terbaru Honkai Star Rail (ID)"
-
-ENV:
-- SUPABASE_URL
-- SUPABASE_SERVICE_KEY (service_role)
-- SUPABASE_BUCKET (default: feeds)
-Optional fallback:
-- GITHUB_TOKEN, GITHUB_REPO, etc.
-"""
 import os
 import asyncio
 import json
