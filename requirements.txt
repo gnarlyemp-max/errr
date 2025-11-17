@@ -1,4 +1,3 @@
-hoyolab-rss-feeds
 requests
 python-dotenv
 pydantic
