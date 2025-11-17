@@ -1,5 +1,12 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
-    "api/*.py": { "runtime": "python3.11" }
-  }
+    "api/**/*.py": {
+      "excludeFiles": "{tests/**,__tests__/**,**/*.test.py,**/test_*.py,fixtures/**,static/**}"
+    }
+  },
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1.py" },
+    { "handle": "filesystem" }
+  ]
 }
